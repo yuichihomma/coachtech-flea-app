@@ -1,0 +1,120 @@
+.profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* 上部 */
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.profile-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-icon {
+    width: 120px;
+    height: 120px;
+    background-color: #ddd;
+    border-radius: 50%;
+}
+
+.profile-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.profile-edit-btn {
+    padding: 10px 20px;
+    border: 1px solid #ff5555;
+    color: #ff5555;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* タブ */
+/* タブ全体 */
+.profile-tabs {
+    display: flex;
+    gap: 40px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 30px;
+}
+
+/* タブ（aタグ版） */
+.profile-tabs .tab {
+    text-decoration: none;
+    /* 下線を消す */
+    color: #000;
+    /* 通常文字色 */
+    font-size: 16px;
+    padding-bottom: 8px;
+    position: relative;
+}
+
+/* アクティブタブ */
+.profile-tabs .tab.active {
+    color: #ff5b5b;
+    font-weight: bold;
+}
+
+/* 赤い下線 */
+.profile-tabs .tab.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 2px;
+    background-color: #ff5b5b;
+}
+/* 商品一覧 */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.product-card {
+    text-align: left;
+}
+
+.product-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.product-name {
+    font-size: 14px;
+}
+
+.mypage-icon {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mypage-icon__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}

@@ -1,0 +1,241 @@
+/* =========================
+   ページ全体
+========================= */
+.item-show {
+    background-color: #fff;
+    padding: 40px 0;
+}
+
+/* =========================
+   コンテナ（2カラム）
+========================= */
+.item-show__container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+/* =========================
+   左：商品画像
+========================= */
+.item-show__image {
+    width: 360px;
+    height: 360px;
+    background-color: #eee;
+    flex-shrink: 0;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 画像 */
+.item-show__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* placeholder */
+.item-show__image--placeholder {
+    color: #999;
+    font-size: 14px;
+}
+
+/* =========================
+   右：商品情報
+========================= */
+.item-show__info {
+    flex: 1;
+}
+
+/* 商品名 */
+.item-show__name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* ブランド */
+.item-show__brand {
+    margin-top: 8px;
+    color: #666;
+}
+
+/* 価格 */
+.item-show__price {
+    margin-top: 16px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.item-show__price span {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+/* =========================
+   アイコン
+========================= */
+.item-icons {
+    margin-top: 16px;
+    display: flex;
+    gap: 20px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.icon-count {
+    font-size: 14px;
+}
+
+/* =========================
+   購入ボタン
+========================= */
+.purchase-btn {
+    display: block;
+    margin-top: 24px;
+    width: 100%;
+    height: 48px;
+    background-color: #ff5a5a;
+    color: #fff;
+    text-align: center;
+    line-height: 48px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* =========================
+   セクション共通
+========================= */
+.item-show__section {
+    margin-top: 40px;
+}
+
+.item-show__section h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+/* 商品情報 */
+.item-show__meta {
+    list-style: none;
+    padding: 0;
+}
+
+.item-show__meta li {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 8px;
+}
+
+.label {
+    width: 100px;
+    color: #666;
+}
+
+/* =========================
+   コメント
+========================= */
+.item-show__comments {
+    margin-top: 20px;
+}
+
+.item-show__comment {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.item-show__comment-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.item-show__comment-user {
+    font-weight: bold;
+}
+
+.item-show__comment-text {
+    margin-top: 4px;
+}
+
+.item-show__comment-date {
+    font-size: 12px;
+    color: #999;
+}
+
+/* textarea */
+.item-show__comment-textarea {
+    width: 100%;
+    height: 120px;
+    margin-top: 12px;
+}
+
+.item-show__comment-btn {
+    margin-top: 12px;
+    width: 100%;
+    height: 44px;
+    background-color: #ff5a5a;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.comment-user-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.default-icon {
+    background-color: #ccc;
+}
+
+.item-show__error-text {
+    color: #ff4d4f;
+    font-size: 14px;
+    margin: 8px 0 12px;
+    line-height: 1.4;
+}
+
+/* =========================
+カテゴリタグ
+========================= */
+.category-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.category-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border: 1px solid #ff5a5a;
+    border-radius: 999px;
+    color: #ff5a5a;
+    font-size: 14px;
+    line-height: 1;
+    background-color: #fff;
+    white-space: nowrap;
+}

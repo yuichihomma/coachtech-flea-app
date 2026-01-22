@@ -1,0 +1,96 @@
+.profile-edit-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.edit-title {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+
+/* 画像エリア */
+.image-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-btn {
+    border: 1px solid #ff5555;
+    color: #ff5555;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* フォーム */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* 更新ボタン */
+.update-btn {
+    width: 100%;
+    background-color: #ff5555;
+    color: #fff;
+    border: none;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* =========================
+   バリデーションエラー表示
+========================= */
+
+/* 各項目のエラーメッセージ */
+.profile-error {
+    color: #ff3b3b;
+    font-size: 14px;
+    margin-top: 6px;
+    line-height: 1.4;
+}
+
+/* エラーメッセージ（最終勝利版） */
+.profile-edit-container .profile-error,
+.profile-edit-container .profile-error-summary li {
+    color: #ff3b3b !important;
+}
+
+/* 箇条書きの「・」も赤くする */
+.profile-edit-container .profile-error-summary li::marker {
+    color: #ff3b3b !important;
+}

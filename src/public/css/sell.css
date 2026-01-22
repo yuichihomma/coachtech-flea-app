@@ -1,0 +1,219 @@
+/* ===== 全体 ===== */
+.sell-page {
+    background-color: #f5f5f5;
+    padding: 40px 0;
+}
+
+.sell-box {
+    max-width: 680px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+/* ===== タイトル ===== */
+.sell-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+/* ===== ブロック ===== */
+.sell-block {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* ===== ラベル ===== */
+.block-title {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* ===== 商品画像 ===== */
+.image-area {
+    width: 100%;
+    height: 180px;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-input {
+    display: none;
+}
+
+.image-btn {
+    padding: 8px 20px;
+    font-size: 13px;
+    color: #ff5a5f;
+    background-color: #fff;
+    border: 1px solid #ff5a5f;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.image-note {
+    font-size: 12px;
+    color: #666;
+    margin-top: 8px;
+}
+/* ===== カテゴリー ===== */
+
+.sell-block {
+    overflow: visible;
+}
+
+.category-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 12px;
+    margin-top: 12px;
+    margin-bottom: 28px;
+    height: auto;
+    overflow: visible;
+}
+
+.category-item {
+    display: inline-flex;
+    align-items: center;
+}
+
+.category-item input {
+    display: none;
+}
+
+.category-item span {
+    display: inline-block;
+    padding: 6px 16px;
+    font-size: 13px;
+    line-height: 1;
+    border-radius: 999px;
+    border: 1px solid #ff5a5f;
+    color: #ff5a5f;
+    background: #fff;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.category-item input:checked+span {
+    background: #ff5a5f;
+    color: #fff;
+}
+/* ===== select ===== */
+.select-box {
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+}
+
+/* ===== input ===== */
+.input-box {
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/* ===== textarea ===== */
+.textarea-box {
+    width: 100%;
+    min-height: 120px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    resize: none;
+}
+
+/* ===== 価格 ===== */
+.price-box {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 40px;
+
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    padding: 0 12px;
+    box-sizing: border-box;
+}
+
+/* ¥ マーク */
+.price-mark {
+    font-size: 14px;
+    margin-right: 6px;
+    white-space: nowrap;
+}
+
+/* 入力欄 */
+.price-input {
+    flex: 1;
+    height: 100%;
+    border: none;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* ===== 出品ボタン ===== */
+.submit-btn {
+    width: 100%;
+    height: 48px;
+    background-color: #ff5a5f;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* ===== 販売価格：上下スピンボタンを消す ===== */
+
+.price-input::-webkit-inner-spin-button,
+.price-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.price-input {
+    appearance: none;
+}
+
+.submit-btn:hover {
+    opacity: 0.9;
+}
+
+.sell-error-summary {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.sell-error {
+    color: red;
+    margin-bottom: 20px;
+}
