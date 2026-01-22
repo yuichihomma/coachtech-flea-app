@@ -7,3 +7,4 @@
 docker/mysql/data
 *.log
 vendor/
+vendor/

@@ -13,20 +13,20 @@ Laravelを使用したフリマアプリです。
 
 Dockerビルド
 
-・git clone<git@github.com:yuichihomma/coachtech-flea-app.git>
-・cd flea-app
-・docker-compose up -d --build
+git clone git@github.com:yuichihomma/coachtech-flea-app.git
+cd coachtech-flea-app
+docker-compose up -d --build
 
 Laravel環境構築
 
-・docker-compose exec php bash
-・composer install
-・cp .env.example .env
-・php artisan key:generate
-・php artisan migrate
-・php artisan db:seed
+docker-compose exec php bash
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan db:seed
 
-##　使用技術
+## 使用技術
 
 ・PHP 8.x
 ・Laravel 8.x
@@ -36,9 +36,8 @@ Laravel環境構築
 ・JavaScript
 ・CSS
 
-##　ER図
-![ER図](image.png)
-
+## ER図
+![ER図](docs/er-diagram.png)
 ## 開発環境URL
 
 ・トップページ：http://localhost/
