@@ -21,6 +21,7 @@ services:
 
   mysql:
     image: mysql:8.0.26
+    platform: linux/amd64
     environment:
       MYSQL_DATABASE: laravel_db
       MYSQL_USER: laravel_user
@@ -33,6 +34,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
+    platform: linux/amd64
     ports:
       - "8081:80"
     environment:

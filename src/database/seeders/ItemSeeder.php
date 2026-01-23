@@ -14,6 +14,7 @@ class ItemSeeder extends Seeder
     public function run()
     {
         Item::create([
+            'user_id' => 1,
             'name' => '腕時計',
             'price' => 15000,
             'brand' => 'Rolax',
@@ -23,6 +24,7 @@ class ItemSeeder extends Seeder
         ]);
         
         Item::create([
+            'user_id' => 1,
             'name' => 'HDD',
             'price' => 5000,
             'brand' => '西芝',
@@ -32,6 +34,7 @@ class ItemSeeder extends Seeder
         ]);
         
         Item::create([
+            'user_id' => 1,
             'name' => '玉ねぎ3束',
             'price' => 300,
             'brand' => 'なし',
@@ -41,6 +44,7 @@ class ItemSeeder extends Seeder
         ]);
         
         Item::create([
+            'user_id' => 1,
             'name' => '革靴',
             'price' => 4000,
             'brand' => 'なし',
@@ -50,6 +54,7 @@ class ItemSeeder extends Seeder
         ]);
         
         Item::create([
+            'user_id' => 1,
             'name' => 'ノートPC',
             'price' => 45000,
             'brand' => 'なし',
@@ -59,6 +64,7 @@ class ItemSeeder extends Seeder
         ]);
         
         Item::create([
+            'user_id' => 1,
             'name' => 'マイク',
             'price' => 8000,
             'brand' => 'なし',
@@ -68,6 +74,7 @@ class ItemSeeder extends Seeder
         ]);
         
         Item::create([
+            'user_id' => 1,
             'name' => 'ショルダーバック',
             'price' => 3500,
             'brand' => 'なし',
@@ -77,6 +84,7 @@ class ItemSeeder extends Seeder
         ]);
         
         Item::create([
+            'user_id' => 1,
             'name' => 'タンブラー',
             'price' => 500,
             'brand' => 'なし',
@@ -84,7 +92,9 @@ class ItemSeeder extends Seeder
             'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Tumbler+souvenir.jpg',
             'condition' => '状態が悪い',
         ]);
+        
         Item::create([
+            'user_id' => 1,
             'name' => 'コーヒーミル',
             'price' => 4000,
             'brand' => 'Starbacks',
@@ -92,7 +102,9 @@ class ItemSeeder extends Seeder
             'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Waitress+with+Coffee+Grinder.jpg',
             'condition' => '良好',
         ]);
+
         Item::create([
+            'user_id' => 1,
             'name' => 'メイクセット',
             'price' => 2500,
             'brand' => 'なし',
