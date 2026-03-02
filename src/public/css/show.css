@@ -17,6 +17,11 @@
     align-items: flex-start;
 }
 
+.item-show__left {
+    width: 360px;
+    flex-shrink: 0;
+}
+
 /* =========================
    左：商品画像
 ========================= */

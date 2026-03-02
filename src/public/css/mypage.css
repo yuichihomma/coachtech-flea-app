@@ -30,6 +30,28 @@
     font-weight: bold;
 }
 
+.profile-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mypage-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.mypage-rating .star {
+    font-size: 40px;
+    line-height: 1;
+    color: #d0d0d0;
+}
+
+.mypage-rating .star.is-on {
+    color: #f2d200;
+}
+
 .profile-edit-btn {
     padding: 10px 20px;
     border: 1px solid #ff5555;
@@ -97,8 +119,30 @@
     font-size: 14px;
 }
 
+.product-image-wrap {
+    position: relative;
+}
+
+.sold-label {
+    position: absolute;
+    left: 50%;
+    top: 58%;
+    transform: translate(-50%, -50%);
+    width: 62%;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 59, 48, 0.85);
+    color: #fff;
+    font-size: clamp(30px, 3.8vw, 52px);
+    font-weight: 700;
+    line-height: 1;
+    pointer-events: none;
+}
+
 .product-name {
-    font-size: 14px;
+    font-size: 20px;
 }
 
 .mypage-icon {
@@ -117,4 +161,49 @@
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+.product-link-wrap {
+    position: relative;
+    display: block;
+}
+
+.notify-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: #ff3b30;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 22px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+    z-index: 2;
+}
+
+.tab {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tab-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    background: #ff3b30;
+    color: #fff;
 }

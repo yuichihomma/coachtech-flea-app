@@ -22,12 +22,14 @@
     <div class="item-show__container">
 
         <!-- 左：商品画像 -->
-        <div class="item-show__image">
-            @if($imageUrl)
-                <img src="{{ $imageUrl }}" alt="{{ $item->name }}">
-            @else
-                <div class="item-show__image--placeholder">商品画像</div>
-            @endif
+        <div class="item-show__left">
+            <div class="item-show__image">
+                @if($imageUrl)
+                    <img src="{{ $imageUrl }}" alt="{{ $item->name }}">
+                @else
+                    <div class="item-show__image--placeholder">商品画像</div>
+                @endif
+            </div>
         </div>
 
         <!-- 右：商品情報 -->

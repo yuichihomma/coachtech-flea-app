@@ -18,6 +18,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Notification Mailer
+    |--------------------------------------------------------------------------
+    |
+    | Optional dedicated mailer for app notifications (e.g. trade completion).
+    | If null, default mailer will be used.
+    |
+    */
+    'notification_mailer' => env('MAIL_NOTIFICATION_MAILER'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Mailer Configurations
     |--------------------------------------------------------------------------
     |
@@ -45,6 +56,28 @@ return [
             'port' => env('MAIL_PORT', 2525),
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
+            'timeout' => null,
+            'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
+        ],
+
+        'mailhog' => [
+            'transport' => 'smtp',
+            'scheme' => env('MAILHOG_SCHEME', env('MAIL_SCHEME')),
+            'host' => env('MAILHOG_HOST', env('MAIL_HOST', 'mailhog')),
+            'port' => env('MAILHOG_PORT', env('MAIL_PORT', 1025)),
+            'username' => env('MAILHOG_USERNAME', env('MAIL_USERNAME')),
+            'password' => env('MAILHOG_PASSWORD', env('MAIL_PASSWORD')),
+            'timeout' => null,
+            'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
+        ],
+
+        'mailtrap' => [
+            'transport' => 'smtp',
+            'scheme' => env('MAILTRAP_SCHEME', 'tls'),
+            'host' => env('MAILTRAP_HOST', 'sandbox.smtp.mailtrap.io'),
+            'port' => env('MAILTRAP_PORT', 2525),
+            'username' => env('MAILTRAP_USERNAME'),
+            'password' => env('MAILTRAP_PASSWORD'),
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
         ],

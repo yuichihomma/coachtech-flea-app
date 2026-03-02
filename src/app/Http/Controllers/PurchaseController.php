@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\Checkout\Session as CheckoutSession;
 use App\Models\Item;
+use App\Models\ChatRoom;
 use App\Http\Requests\AddressRequest;
 
 class PurchaseController extends Controller
@@ -78,12 +80,18 @@ class PurchaseController extends Controller
     public function success($item_id)
     {
         $item = Item::findOrFail($item_id);
+        $buyerId = Auth::id();
 
         $item->is_sold = true;
-        $item->buyer_id = Auth::id();
+        $item->buyer_id = $buyerId;
         $item->save();
 
-        return redirect()->route('items.index')
+        $chatRoom = ChatRoom::firstOrCreate(
+            ['item_id' => $item->id, 'buyer_id' => $buyerId],
+            ['seller_id' => $item->user_id, 'status' => 'trading']
+        );
+
+        return redirect()->route('chat.show', $chatRoom)
             ->with('success', '購入が完了しました');
     }
 

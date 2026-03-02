@@ -7,6 +7,10 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ChatRoomController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\RatingController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +44,30 @@ Route::middleware('auth')->group(function () {
     Route::get('/sell', fn () => view('items.sell'))->name('sell');
     Route::post('/sell', [ItemController::class, 'store']);
 
+    // ルーム作成（商品詳細のボタンからPOST）
+    Route::post('/items/{item}/chat', [ChatRoomController::class, 'store'])->name('chat.store');
+    Route::post('/chat-rooms/{item}/start', [ChatRoomController::class, 'start'])->name('chat.start');
+
+    // ルーム表示
+    Route::get('/chat/{chatRoom}', [ChatRoomController::class, 'show'])->name('chat.show');
+
+    // メッセージ送信
+    Route::post('/chat/{chatRoom}/messages', [MessageController::class, 'store'])->name('messages.store');
+    Route::patch('/messages/{message}', [MessageController::class, 'update'])
+        ->name('messages.update');
+    Route::delete('/messages/{message}', [MessageController::class, 'destroy'])
+        ->name('messages.destroy');
+
+    // 取引中一覧
+    Route::get('/mypage/trading', [ChatRoomController::class, 'trading'])->name('mypage.trading');
+
+    // 取引完了
+    Route::post('/chat/{chatRoom}/complete', [ChatRoomController::class, 'complete'])
+        ->name('chat.complete');
+
+    // 取引評価
+    Route::post('/chat/{chatRoom}/ratings', [RatingController::class, 'store'])
+        ->name('ratings.store');
 });
 
 /*
@@ -77,7 +105,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/item/{item}/like', [LikeController::class, 'store'])
         ->name('item.like');
 
-    
 });
 
 /*
