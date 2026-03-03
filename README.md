@@ -16,19 +16,19 @@ Laravelを使用したフリマアプリです。
 
 Dockerビルド
 
-git clone git@github.com:yuichihomma/coachtech-flea-app.git
-cd coachtech-flea-app
-docker-compose up -d --build
+- git clone git@github.com:yuichihomma/coachtech-flea-app.git
+- cd coachtech-flea-app
+- docker-compose up -d --build
 
 Laravel環境構築
 
-cp .env.example src/.env
-docker-compose exec php bash
-cd /var/www/html
-composer install
-php artisan key:generate
-php artisan migrate
-php artisan db:seed
+- cp .env.example src/.env
+- docker-compose exec php bash
+- cd /var/www/html
+- composer install
+- php artisan key:generate
+- php artisan migrate
+- php artisan db:seed
 
 ※ `src/.env` のDB接続は以下を設定してください。
 - `DB_HOST=mysql`
