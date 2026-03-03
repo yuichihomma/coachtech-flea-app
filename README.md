@@ -24,7 +24,6 @@ Laravel環境構築
 
 - cp .env.example src/.env
 - docker-compose exec php bash
-- cd /var/www/html
 - composer install
 - php artisan key:generate
 - php artisan migrate
