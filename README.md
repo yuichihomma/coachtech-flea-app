@@ -22,12 +22,20 @@ docker-compose up -d --build
 
 Laravel環境構築
 
+cp .env.example src/.env
 docker-compose exec php bash
+cd /var/www/html
 composer install
-cp .env.example .env
 php artisan key:generate
 php artisan migrate
 php artisan db:seed
+
+※ `src/.env` のDB接続は以下を設定してください。
+- `DB_HOST=mysql`
+- `DB_PORT=3306`
+- `DB_DATABASE=laravel_db`
+- `DB_USERNAME=laravel_user`
+- `DB_PASSWORD=laravel_pass`
 
 ## 使用技術
 
@@ -56,47 +64,32 @@ php artisan db:seed
 
 ## ダミーデータについて
 
-本アプリでは、以下のダミーユーザーおよび商品データを作成しています。
+本アプリでは、`php artisan db:seed` により以下のダミーデータを作成しています。
 
 ### ユーザー一覧
 
-#### ユーザーA（ID:2）
-- 名前：テスト野郎
-- メールアドレス：test@example.com
-- パスワード:password
-- 出品商品：
-  - C001 腕時計
-  - C002 HDD
-  - C003 玉ねぎ3束
-  - C004 革靴
-  - C005 ノートPC
-
-#### ユーザーB（ID:3）
-- 名前：三似萌美
-- メールアドレス：minimoni@yahoo.ne.jp
-- パスワード:minimoni
-- 出品商品：
-  - C006 マイク
-  - C007 ショルダーバッグ
-  - C008 タンブラー
-  - C009 コーヒーミル
-  - C010 メイクセット
-
-#### ユーザーC（ID:4）
-- 名前：猫田敏三
-- メールアドレス：nekoneko@yahoo.ne.jp
-- パスワード:passpass
-- 出品・購入履歴なし（未紐付けユーザー）
+- `User::factory()->create()` により、ランダムなユーザーが1件作成されます
+- パスワードは `password` です
+- 作成されるユーザーの名前・メールアドレスは実行ごとに変わります
 
 ### 商品データ
 
-商品データはC001〜C010までの10件を作成しています。
+商品データは10件作成され、すべて上記ユーザー（`user_id = 1`）に紐づきます。
 
-- 各商品は価格・説明・画像URL・コンディション情報を保持
-- 一部商品は購入済み（is_sold = 1）
-- 未購入商品は is_sold = 0
+- 商品名:
+  - 腕時計
+  - HDD
+  - 玉ねぎ3束
+  - 革靴
+  - ノートPC
+  - マイク
+  - ショルダーバック
+  - タンブラー
+  - コーヒーミル
+  - メイクセット
+- 各商品は価格・説明・画像URL・コンディション情報を保持します
+- `is_sold` はSeederで指定していないため、すべて未購入（`0`）で登録されます
 
-※ ダミーデータは `php artisan db:seed` により投入されます。
 ## 開発環境URL
 
 ・トップページ：http://localhost/
