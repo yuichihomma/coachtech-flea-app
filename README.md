@@ -40,7 +40,7 @@ php artisan db:seed
 ・CSS
 
 ## ER図
-![ER図](docs/new er-diagram.png)
+![ER図]![alt text](<docs/new er-diagram.png>)
 
 ## 取引チャット機能
 
