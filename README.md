@@ -77,7 +77,7 @@ Laravel環境構築
 
 ### 商品データ
 
-商品データは10件作成されており、items_id=1~5はusers_id=1に、items_id=6~10はusers_id=2に紐付いています。
+商品データは10件作成されており、items_id=1から5はusers_id=1に、items_id=6から10はusers_id=2に紐付いています。
 
 - 商品名:
   - 腕時計
