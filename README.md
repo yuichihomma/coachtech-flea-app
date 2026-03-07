@@ -67,13 +67,17 @@ Laravel環境構築
 
 ### ユーザー一覧
 
-- `User::factory()->create()` により、ランダムなユーザーが1件作成されます
-- パスワードは `password` です
-- 作成されるユーザーの名前・メールアドレスは実行ごとに変わります
+### ユーザー一覧
+
+| id | name | email | password |
+|----|------|------|---------|
+| 1 | Cameron Shields | ukovacek@example.net | password |
+| 2 | テスト野郎 | test@example.com | password |
+| 3 | 三似 萌美 | minimoni@yahoo.ne.jp | password |
 
 ### 商品データ
 
-商品データは10件作成され、すべて上記ユーザー（`user_id = 1`）に紐づきます。
+商品データは10件作成されており、items_id=1~5はusers_id=1に、items_id=6~10はusers_id=2に紐付いています。
 
 - 商品名:
   - 腕時計

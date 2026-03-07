@@ -8,14 +8,13 @@ use App\Models\Message;
 use App\Models\Rating;
 use App\Mail\TradeCompletedMail;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ChatRoomController extends Controller
 {
     public function store(Item $item)
     {
-        $buyerId = auth()->id();
+        $buyerId = Auth::id();
         $sellerId = $item->user_id;
 
         // 出品者が自分の商品でチャット開始するのは不可（購入希望者開始のルール）
@@ -32,7 +31,7 @@ class ChatRoomController extends Controller
 
     public function show(ChatRoom $chatRoom)
     {
-        $userId = auth()->id();
+        $userId = Auth::id();
 
         // 認可：buyer or seller のみ
         abort_if(!in_array($userId, [$chatRoom->buyer_id, $chatRoom->seller_id]), 403);
@@ -53,12 +52,13 @@ class ChatRoomController extends Controller
         $messages = $chatRoom->messages()->with('user')->get();
 
         $otherRooms = ChatRoom::with(['item', 'buyer', 'seller'])
+            ->withMax('messages', 'created_at')
             ->where(function ($query) use ($userId) {
                 $query->where('buyer_id', $userId)
                     ->orWhere('seller_id', $userId);
             })
             ->where('id', '!=', $chatRoom->id)
-            ->latest()
+            ->orderByRaw('COALESCE(messages_max_created_at, created_at) DESC')
             ->get();
 
         $hasRated = Rating::where('chat_room_id', $chatRoom->id)
@@ -70,7 +70,7 @@ class ChatRoomController extends Controller
 
     public function trading()
 {
-    $userId = auth()->id();
+    $userId = Auth::id();
 
     // 自分が buyer（購入希望者）として参加している取引
     $asBuyer = ChatRoom::with(['item'])
@@ -111,9 +111,9 @@ public function start(Item $item)
         return redirect()->route('chat.show', $room);
     }
 
-    public function complete(ChatRoom $chatRoom)
+public function complete(ChatRoom $chatRoom)
 {
-    $userId = auth()->id();
+    $userId = Auth::id();
 
     // 購入者のみ
     abort_if((int)$chatRoom->buyer_id !== (int)$userId, 403, '購入者のみ取引完了できます');

@@ -13,8 +13,8 @@ class MessageController extends Controller
 {
     public function store(StoreMessageRequest $request, ChatRoom $chatRoom)
     {
-       // 認可
-        abort_if(!in_array(auth()->id(), [$chatRoom->buyer_id, $chatRoom->seller_id]), 403);
+        // 認可
+        abort_if(!in_array(Auth::id(), [$chatRoom->buyer_id, $chatRoom->seller_id]), 403);
 
         $data = $request->validated();
 
@@ -25,7 +25,7 @@ class MessageController extends Controller
 
         $payload = [
             'chat_room_id' => $chatRoom->id,
-            'user_id'      => auth()->id(),
+            'user_id'      => Auth::id(),
             'body'         => $data['body'],
         ];
 
@@ -38,7 +38,7 @@ class MessageController extends Controller
         return back();
     }
 
-    public function update(\Illuminate\Http\Request $request, Message $message)
+    public function update(Request $request, Message $message)
     {
         abort_if($message->user_id !== Auth::id(), 403);
 
@@ -53,12 +53,12 @@ class MessageController extends Controller
         return back();
     }
 
-public function destroy(Message $message)
-{
-    abort_if($message->user_id !== Auth::id(), 403);
+    public function destroy(Message $message)
+    {
+        abort_if($message->user_id !== Auth::id(), 403);
 
-    $message->delete();
+        $message->delete();
 
-    return back();
-}
+        return back();
+    }
 }

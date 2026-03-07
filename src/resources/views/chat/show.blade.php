@@ -6,9 +6,10 @@
 
 @section('content')
 @php
+    use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Str;
 
-    $currentUserId = auth()->id();
+    $currentUserId = Auth::id();
     $currentRoom = $chatRoom;
     $partner = $currentRoom->buyer_id === $currentUserId ? $currentRoom->seller : $currentRoom->buyer;
     $isBuyer = (int) $currentRoom->buyer_id === (int) $currentUserId;
@@ -168,7 +169,7 @@
 
     <div class="msg__edit-actions">
         <button type="submit" class="msg__action">保存</button>
-        <button type="button" class="msg__action" onclick="cancelEdit({{ $message->id }})">キャンセル</button>
+        <button type="button" class="msg__action js-cancel-edit" data-message-id="{{ $message->id }}">キャンセル</button>
     </div>
 </form>
 
@@ -176,8 +177,8 @@
     <div class="msg__actions">
         {{-- 編集 --}}
         <button type="button"
-                class="msg__action"
-                onclick="toggleEdit({{ $message->id }})">
+                class="msg__action js-toggle-edit"
+                data-message-id="{{ $message->id }}">
             編集
         </button>
 
@@ -211,12 +212,13 @@
 
         {{-- 入力フォーム --}}
         <footer class="trade-input">
-            <form class="trade-input__form" method="POST" action="{{ route('messages.store', $currentRoom) }}" enctype="multipart/form-data">
+            <form class="trade-input__form" method="POST" action="{{ route('messages.store', $currentRoom) }}" enctype="multipart/form-data" data-room-id="{{ $currentRoom->id }}">
                 @csrf
 
                 <input
                     type="text"
                     name="body"
+                    id="tradeMessageBody"
                     class="trade-input__text"
                     placeholder="取引メッセージを記入してください"
                     value="{{ old('body') }}"
@@ -226,7 +228,6 @@
                     type="file"
                     name="image"
                     id="messageImage"
-                    accept="image/png,image/jpeg"
                     style="display:none;"
                 >
 
@@ -310,6 +311,25 @@ function cancelEdit(id){
     form.style.display = 'none';
     display.style.display = 'block';
 }
+
+document.addEventListener('click', (e) => {
+    const toggleButton = e.target.closest('.js-toggle-edit');
+    if (toggleButton) {
+        const id = Number(toggleButton.dataset.messageId);
+        if (Number.isInteger(id)) {
+            toggleEdit(id);
+        }
+        return;
+    }
+
+    const cancelButton = e.target.closest('.js-cancel-edit');
+    if (!cancelButton) return;
+
+    const id = Number(cancelButton.dataset.messageId);
+    if (Number.isInteger(id)) {
+        cancelEdit(id);
+    }
+});
 </script>
 
 <script>
@@ -320,8 +340,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!btn || !fileInput || !form) return;
 
-  const MAX_BYTES = 1 * 1024 * 1024; // 1MB
-  const MAX_MB_TEXT = '1MB';
+  const MAX_BYTES = 1 * 2048 * 2048; // 2MB
+  const MAX_MB_TEXT = '2MB';
 
   const rejectLargeFile = () => {
     alert(`画像は${MAX_MB_TEXT}以下のみアップロードできます。`);
@@ -353,6 +373,36 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       rejectLargeFile();
     }
+  });
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const bodyInput = document.getElementById('tradeMessageBody');
+  const form = document.querySelector('.trade-input__form');
+
+  if (!bodyInput || !form) return;
+
+  const roomId = form.dataset.roomId;
+  const storageKey = `trade-message-draft-${roomId}`;
+
+  // old('body') がなければ、保存済み下書きを復元
+  if (!bodyInput.value) {
+    const savedDraft = sessionStorage.getItem(storageKey);
+    if (savedDraft !== null) {
+      bodyInput.value = savedDraft;
+    }
+  }
+
+  // 入力のたびに保存
+  bodyInput.addEventListener('input', () => {
+    sessionStorage.setItem(storageKey, bodyInput.value);
+  });
+
+  // 送信時は下書きを削除
+  form.addEventListener('submit', () => {
+    sessionStorage.removeItem(storageKey);
   });
 });
 </script>

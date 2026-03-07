@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+@endsection
+
 @section('content')
 <div class="login">
     <div class="login__container">

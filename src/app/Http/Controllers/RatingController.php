@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Rating;
 use App\Models\ChatRoom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RatingController extends Controller
 {
     public function store(Request $request, ChatRoom $chatRoom)
     {
-        $userId = auth()->id();
+        $userId = Auth::id();
 
         $data = $request->validate([
             'rating' => ['required', 'integer', 'between:1,5'],

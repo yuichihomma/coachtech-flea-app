@@ -1,0 +1,13 @@
+{
+  "files.associations": {
+    "*.blade.php": "blade"
+  },
+  "intelephense.files.associations": [
+    "*.php",
+    "*.phtml",
+    "*.blade.php"
+  ],
+  "emmet.includeLanguages": {
+    "blade": "html"
+  }
+}

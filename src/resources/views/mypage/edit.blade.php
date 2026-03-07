@@ -116,7 +116,7 @@ document.getElementById('profileImageInput').addEventListener('change', function
     }
 
     // サイズ制限（2MB）
-    if (file.size > 2 * 1024 * 1024) {
+    if (file.size > 2 * 2048 * 2048) {
         alert('画像サイズは2MB以下にしてください');
         e.target.value = '';
         return;
